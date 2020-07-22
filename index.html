@@ -1,16 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-	<meta name="theme-color" content="#B12A34">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>pwa-app demo</title>
-	<link href="style.css" rel="stylesheet">
-    <script src="index.js" defer></script>
-    <link rel="manifest" href="manifest.webmanifest">
-  </head>
-  <body>
-    <img src="images/fox1.jpg" alt="a fox picture">
-    <button class="add-button">Add to home screen</button>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#B12A34">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>pwa-app demo</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="css/navbar.css" rel="stylesheet">
+  <script src="index.js" defer></script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/lib/bootstrap.bundle.js"></script>
+  <script src="js/utils.js"></script>
+ 
+</head>
+
+<body>
+<div id="topheader">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-xl">
+      <a class="navbar-brand" href="#">PWA App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL"
+        aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample07XL">
+        <ul class="navbar-nav mr-auto" id=menuItems>
+          <li class="nav-item active">
+            <a class="nav-link" data-tpl=list href="#list">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tpl=add href="#add">Add</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tpl=contact href="#contact">Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tpl=aboutus href="#aboutus">About us</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </nav>
+  </div>
+  <div id=contentView></div>
+</body>
 </html>
