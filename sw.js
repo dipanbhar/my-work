@@ -45,5 +45,5 @@ self.addEventListener('fetch',function(e) {
 });
 
 self.addEventListener('push', function (event) {
-        const promiseChain = self.registration.showNotification('Hello, World.');
+        var promiseChain = self.registration.showNotification('Hello, World.');
 });
