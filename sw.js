@@ -1,24 +1,24 @@
 var cacheName = 'my-pwa-app' + Math.random();
-var cached_urls = [
-    'index.html',
-    './css/style.css',
-    './css/bootstrap.css',
-    './css/navbar.css',
-    './tpl/list.tpl',
-    './tpl/add.tpl',
-    './tpl/contact.tpl',
-    './tpl/aboutus.tpl',
-    './js/utils.js',
-    './js/lib/jquery.min.js',
-    './js/lib/bootstrap.bundle.js'
+// var cached_urls = [
+//     'index.html',
+//     './css/style.css',
+//     './css/bootstrap.css',
+//     './css/navbar.css',
+//     './tpl/list.tpl',
+//     './tpl/add.tpl',
+//     './tpl/contact.tpl',
+//     './tpl/aboutus.tpl',
+//     './js/utils.js',
+//     './js/lib/jquery.min.js',
+//     './js/lib/bootstrap.bundle.js'
 
-];
-//var cached_urls = ['./'];
+// ];
+var cached_urls = ['./'];
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
             return cache.addAll(cached_urls);
-        }).then(function(){self.skipWaiting()})
+        }).then(function () { self.skipWaiting() })
     );
 });
 
@@ -37,16 +37,14 @@ self.addEventListener('activate', function (e) {
             );
         })
     );
+
 });
 
-self.addEventListener('fetch',function(e) {
+self.addEventListener('fetch', function (e) {
     console.log('Service Worker: Fetching');
-    e.respondWith(fetch(e.request).catch(function(){
-        //console.log('Service Worker: Fetching from locale cache');
-        caches.match(e.request)
-    }));
+    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
 });
 
 self.addEventListener('push', function (event) {
-        var promiseChain = self.registration.showNotification('Hello, World.');
+    var promiseChain = self.registration.showNotification('Hello, World.');
 });
