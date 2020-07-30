@@ -41,7 +41,10 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch',function(e) {
     console.log('Service Worker: Fetching');
-    e.respondWith(fetch(e.request).catch(function(){caches.match(e.request)}));
+    e.respondWith(fetch(e.request).catch(function(){
+        //console.log('Service Worker: Fetching from locale cache');
+        caches.match(e.request)
+    }));
 });
 
 self.addEventListener('push', function (event) {

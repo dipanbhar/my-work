@@ -4,7 +4,6 @@ $(document).ready(function () {
         $('#topheader .navbar-nav').find('li.active').removeClass('active');
         $(this).parent('li').addClass('active');
         var tpl =  $(this).data().tpl;
-        console.log(tpl);
         loadResourse(tpl);
     });
     function loadResourse(tpl) {

@@ -1,0 +1,57 @@
+// Register service worker to control making site work offline
+const publicVapidKey = "BJyHe5EFnNCK-tDdJl7i6cLdRz416N1nwz4k3VN89k-hzX7TvYDcgo4dl-GzOxNgsOtVcOoGGxUR-30gM8AEHDM";
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(function (register) {
+      console.log('Service Worker Registered');
+      // Register Push
+      console.log("Registering Push...");
+      const subscription = register.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+      });
+      console.log("Push Registered...");
+
+      // Send Push Notification
+      console.log("Sending Push...");
+       fetch("/subscribe", {
+        method: "POST",
+        body: JSON.stringify(subscription),
+        headers: {
+          "content-type": "application/json"
+        }
+      });
+      console.log("Push Sent...");
+
+    });
+}
+
+(function () {
+  Notification.requestPermission(function (result) {
+    console.log("User choice", result);
+    if (result !== "granted") {
+      console.log("No notification permission granted!");
+    } else {
+      console.log("User choice granted", result);
+      //configurePushSub();// Write your custom function that pushes your message
+    }
+  });
+})();
+
+
+
+function urlBase64ToUint8Array(base64String) {
+  const padding = "=".repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+    .replace(/\-/g, "+")
+    .replace(/_/g, "/");
+
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}

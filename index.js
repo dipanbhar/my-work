@@ -1,14 +1,15 @@
 // Register service worker to control making site work offline
-
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register('/sw.js')
-    .then(function () { console.log('Service Worker Registered'); });
-}
+    .then(function (register) {
+      console.log('Service Worker Registered');
+    })
+};
 
-(function(){
-  Notification.requestPermission(function(result) {
-    console.log("User choice", result);
+(function () {
+  Notification.requestPermission(function (result) {
+   
     if (result !== "granted") {
       console.log("No notification permission granted!");
     } else {
