@@ -13,7 +13,10 @@ var cacheName = 'my-pwa-app' + Math.random();
 //     './js/lib/bootstrap.bundle.js'
 
 // ];
-var cached_urls = ['./'];
+var cached_urls = ['./',
+                  './assets/img',
+                  './assets/img/portfolio',
+                  './css'];
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
