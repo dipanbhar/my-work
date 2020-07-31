@@ -1,22 +1,23 @@
 var cacheName = 'my-pwa-app' + Math.random();
-// var cached_urls = [
-//     'index.html',
-//     './css/style.css',
-//     './css/bootstrap.css',
-//     './css/navbar.css',
-//     './tpl/list.tpl',
-//     './tpl/add.tpl',
-//     './tpl/contact.tpl',
-//     './tpl/aboutus.tpl',
-//     './js/utils.js',
-//     './js/lib/jquery.min.js',
-//     './js/lib/bootstrap.bundle.js'
+var cached_urls = [
+    'index.html',
+    './css/styles.css',
+    './index.js',
+    './js/lib/jquery-3.1.1.min.js',
+    './js/lib/bootstrap.bundle.min.js',
+    './js/lib/jquery.easing.min.js',
+    './js/lib/jquery.magnific-popup.min.js',
+    './js/scripts.js',
+    './assets/img/portfolio/thumbnails/1.jpg',
+    './assets/img/portfolio/thumbnails/2.jpg',
+    './assets/img/portfolio/thumbnails/3.jpg',
+    './assets/img/portfolio/thumbnails/4.jpg',
+    './assets/img/portfolio/thumbnails/5.jpg',
+    './assets/img/portfolio/thumbnails/6.jpg',
+    './manifest.webmanifest',
+    './assets/img/favicon.ico'
+];
 
-// ];
-var cached_urls = ['./',
-                  './assets/img/',
-                  './assets/img/portfolio/',
-                  './css/'];
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
