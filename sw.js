@@ -14,9 +14,9 @@ var cacheName = 'my-pwa-app' + Math.random();
 
 // ];
 var cached_urls = ['./',
-                  './assets/img',
-                  './assets/img/portfolio',
-                  './css'];
+                  './assets/img/',
+                  './assets/img/portfolio/',
+                  './css/'];
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
