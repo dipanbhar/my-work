@@ -1,5 +1,6 @@
 var cacheName = 'my-pwa-app' + Math.random();
 var cached_urls = [
+    '/',
     'index.html',
     './css/styles.css',
     './index.js',
